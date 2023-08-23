@@ -10,3 +10,4 @@ def frstOccur(arr : List[int],i: int,n: int):
 
 a=frstOccur([1,2,3,4,5,6,7],0,8)
 print(a)
+

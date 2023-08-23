@@ -4,4 +4,4 @@ def fibo(n):
     if n==0:
         return 0
     return fibo(n-1)+fibo(n-2)
-print(fibo(25))
+print(fibo(100))
