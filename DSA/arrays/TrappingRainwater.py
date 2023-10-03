@@ -12,7 +12,21 @@ def trappedRainWater(l):
     for i in range(len(l)):
         waterlevel = min(lmb[i],rmb[i])
         trappedWater+=(waterlevel-l[i])
-    print(rmb,lmb,trappedWater)
+    print(trappedWater)
 
-l = [4,2,0,6,3,2,5]
-trappedRainWater(l)
+
+def trap(height) :
+        apex, ans = height.index(max(height)), 0
+        for arr in [height[:apex], height[:apex:-1]]:
+            limit = 0
+            for val in arr:
+                if val < limit:
+                    ans += limit - val
+                else:
+                    limit = val
+        return ans
+
+l = [8,0,1,0,2,1,0,1,3]
+print(trap(l[1:]))
+
+

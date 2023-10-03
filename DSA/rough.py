@@ -1,106 +1,110 @@
-# Python program to convert infix expression to postfix
 
 
-# Class to convert the expression
-class Conversion:
 
-	# Constructor to initialize the class variables
-	def __init__(self, capacity):
-		self.top = -1
-		self.capacity = capacity
-		
-		# This array is used a stack
-		self.array = []
-		
-		# Precedence setting
-		self.output = []
-		self.precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+# def mergesort(arr ,strt , end):
+#     if strt>=end:
+#         return
+#     mid = (strt+end)//2
 
-	# Check if the stack is empty
-	def isEmpty(self):
-		return True if self.top == -1 else False
+#     mergesort(arr,strt,mid)
+#     mergesort(arr,mid+1,end)
+#     merge(arr,strt,mid,end) # work
 
-	# Return the value of the top of the stack
-	def peek(self):
-		return self.array[-1]
+# def merge(arr,strt,mid,end):
+#     temp = [0]*(end-strt+1)
+#     i=strt
+#     j = mid+1
+#     k=0
+#     while i<=mid and j<=end:
+#         if arr[i]<arr[j]:
+#             temp[k] = arr[i]
+#             i+=1
+#         else:
+#             temp[k] = arr[j]
+#             j+=1
+#         k+=1
 
-	# Pop the element from the stack
-	def pop(self):
-		if not self.isEmpty():
-			self.top -= 1
-			return self.array.pop()
-		else:
-			return "$"
-
-	# Push the element to the stack
-	def push(self, op):
-		self.top += 1
-		self.array.append(op)
-
-	# A utility function to check is the given character
-	# is operand
-	def isOperand(self, ch):
-		return ch.isalpha()
-
-	# Check if the precedence of operator is strictly
-	# less than top of stack or not
-	def notGreater(self, i):
-		try:
-			a = self.precedence[i]
-			b = self.precedence[self.peek()]
-			return True if a <= b else False
-		except KeyError:
-			return False
-
-	# The main function that
-	# converts given infix expression
-	# to postfix expression
-	def infixToPostfix(self, exp):
-
-		# Iterate over the expression for conversion
-		for i in exp:
-			
-			# If the character is an operand,
-			# add it to output
-			if self.isOperand(i):
-				self.output.append(i)
-
-			# If the character is an '(', push it to stack
-			elif i == '(':
-				self.push(i)
-
-			# If the scanned character is an ')', pop and
-			# output from the stack until and '(' is found
-			elif i == ')':
-				while((not self.isEmpty()) and
-					self.peek() != '('):
-					a = self.pop()
-					self.output.append(a)
-				if (not self.isEmpty() and self.peek() != '('):
-					return -1
-				else:
-					self.pop()
-
-			# An operator is encountered
-			else:
-				while(not self.isEmpty() and self.notGreater(i)):
-					self.output.append(self.pop())
-				self.push(i)
-
-		# Pop all the operator from the stack
-		while not self.isEmpty():
-			self.output.append(self.pop())
-
-		for ch in self.output:
-			print(ch, end="")
+#     while i<= mid:
+#         temp[k] = arr[i]
+#         i+=1
+#         k+=1
+#     while j<= end:
+#         temp[k] = arr[j]
+#         j+=1
+#         k+=1
+#     for i in range(end-strt+1):
+#         arr[strt+i] = temp[i]
 
 
-# Driver code
-if __name__ == '__main__':
-	exp = "(A*(B-C)/D+E)"
-	obj = Conversion(len(exp))
 
-	# Function call
-	obj.infixToPostfix(exp)
+# ##############################################################################
 
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
+# def quickSort(arr,strt,end):
+#     if strt>=end:
+#          return
+    
+#     pivotindx = partition(arr,strt,end)
+#     quickSort(arr,strt,pivotindx-1)
+#     quickSort(arr,pivotindx+1,end)
+
+# def partition(arr ,strt,end):
+#     pivot = arr[end]
+#     i = strt-1
+#     for j in range(strt,end):
+#         if arr[j]<pivot:
+#             i+=1
+#             arr[i],arr[j] = arr[j],arr[i]
+#     i+=1
+#     arr[end],arr[i] = arr[i],arr[end]
+
+#     return i
+
+# ####################################################
+# arr = [2,3,1,7,6,5,8,4,5,46,3,4,2,1]
+
+# # mergesort(arr,0,len(arr)-1)
+# quickSort(arr,0,len(arr)-1)
+# print(arr)
+
+# def countDigits(n: int) -> int:
+#     num = n
+#     c=0 
+#     while num > 0:
+#         rem = num%10
+#         if rem != 0 and  n%rem == 0:
+#             c+=1
+#         num//=10
+#     return c
+# print(countDigits(35))
+
+# def permute(a, l, r,d):
+    
+#     if l == r:
+#         if "".join(a) not in d:
+#             d["".join(a)] = 1
+#             print(''.join(a))
+#     else:
+#         for i in range(l, r):
+#             a[l], a[i] = a[i], a[l]
+#             permute(a, l+1, r,d)
+#             a[l], a[i] = a[i], a[l] 
+
+
+# n = int(input())
+# m = int(input())
+# a = "i"*m+"-"*(n-m)
+# a=list(a)
+# # permute(a,0,n,{})
+
+
+# from datetime import datetime
+
+# rahulinTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
+# rahuloutTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
+# rohitinTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
+# rohitoutTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
+
+# print(int((rahuloutTime-rahulinTime).total_seconds()+(rohitoutTime-rohitinTime).total_seconds()))
+
+
+

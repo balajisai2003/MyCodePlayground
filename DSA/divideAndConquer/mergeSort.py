@@ -35,7 +35,7 @@ def merge(arr,start,mid,end):
         arr[start+i] = temp[i]
 
 
-arr = [1,3,4,2,5,2,7,5,22,11,43,13]
+arr = ["fghj","dfg","lkl","jih","poi"]
 
 mergeSort(arr,0,len(arr)-1)
 
