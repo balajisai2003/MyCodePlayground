@@ -1,0 +1,15 @@
+l1 = [1,2,3,4,5,6,7,8,9,10,11]
+l2 = [4,5,6,7,8,8,8,9,10]
+rl = [None]
+i=0
+j=0
+while i<len(l1) and j<len(l2):
+    if l1[i] == l2[j] and (rl[-1] is None or rl[-1]<l1[i]):
+        rl.append(l1[i])
+        i+=1
+        j+=1
+    elif l1[i]<l2[j]:
+        i+=1
+    elif l1[i]>l2[j]:
+        j+=1 
+print(rl[1:])
