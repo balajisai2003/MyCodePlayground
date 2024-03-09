@@ -1,110 +1,92 @@
-
-
-
-# def mergesort(arr ,strt , end):
-#     if strt>=end:
-#         return
-#     mid = (strt+end)//2
-
-#     mergesort(arr,strt,mid)
-#     mergesort(arr,mid+1,end)
-#     merge(arr,strt,mid,end) # work
-
-# def merge(arr,strt,mid,end):
-#     temp = [0]*(end-strt+1)
-#     i=strt
-#     j = mid+1
-#     k=0
-#     while i<=mid and j<=end:
-#         if arr[i]<arr[j]:
-#             temp[k] = arr[i]
-#             i+=1
-#         else:
-#             temp[k] = arr[j]
-#             j+=1
-#         k+=1
-
-#     while i<= mid:
-#         temp[k] = arr[i]
-#         i+=1
-#         k+=1
-#     while j<= end:
-#         temp[k] = arr[j]
-#         j+=1
-#         k+=1
-#     for i in range(end-strt+1):
-#         arr[strt+i] = temp[i]
-
-
-
-# ##############################################################################
-
-# def quickSort(arr,strt,end):
-#     if strt>=end:
-#          return
-    
-#     pivotindx = partition(arr,strt,end)
-#     quickSort(arr,strt,pivotindx-1)
-#     quickSort(arr,pivotindx+1,end)
-
-# def partition(arr ,strt,end):
-#     pivot = arr[end]
-#     i = strt-1
-#     for j in range(strt,end):
-#         if arr[j]<pivot:
-#             i+=1
-#             arr[i],arr[j] = arr[j],arr[i]
-#     i+=1
-#     arr[end],arr[i] = arr[i],arr[end]
-
-#     return i
-
-# ####################################################
-# arr = [2,3,1,7,6,5,8,4,5,46,3,4,2,1]
-
-# # mergesort(arr,0,len(arr)-1)
-# quickSort(arr,0,len(arr)-1)
-# print(arr)
-
-# def countDigits(n: int) -> int:
-#     num = n
-#     c=0 
-#     while num > 0:
-#         rem = num%10
-#         if rem != 0 and  n%rem == 0:
-#             c+=1
-#         num//=10
-#     return c
-# print(countDigits(35))
-
-# def permute(a, l, r,d):
-    
-#     if l == r:
-#         if "".join(a) not in d:
-#             d["".join(a)] = 1
-#             print(''.join(a))
+# n = int(input("Enter the size of the array: "))
+# alist = list(map(int, input(f"Enter {n} elements of the array: ").split()))
+# d= {}
+# for i in alist:
+#     if i in d:
+#         d[i]+=1
 #     else:
-#         for i in range(l, r):
-#             a[l], a[i] = a[i], a[l]
-#             permute(a, l+1, r,d)
-#             a[l], a[i] = a[i], a[l] 
+#         d[i]=1
+# print("Duplicate elements:", end=" ")
+# for i in d:
+#     if d[i]>1:
+#         print(i, end=" ")
+# print()
+# print("Unique elements:", end=" ")
+# for i in d:
+#     if d[i]==1:
+#         print(i, end=" ")
 
 
+
+# for _ in range(int(input())):
+#     n,k = map(int,input().split())
+#     arr = sorted(map(int,input().split()))
+#     arr.reverse()
+#     i = 0
+#     res = 0
+#     while k>0:
+#         if arr[i] < arr[i + 1]:
+#             i += 1
+#         res+=arr[i]
+#         arr[i] -= 1
+#         k -= 1
+#     print(res)
+        
+
+# # prime numbers between a, b
+# def isPrime(n):
+#     return False if n==1 else all(n%i != 0 for i in range(2, int(n**0.5)+1))
+# for _ in range(int(input())):
+#     a,b = map(int,input().split())
+#     for i in range(a,b+1):
+#         if isPrime(i):
+#             print(i)
+#     print()
+
+
+
+# def isPrime(n):
+#     return False if n==1 else all(n%i != 0 for i in range(2, int(n**0.5)+1))
 # n = int(input())
-# m = int(input())
-# a = "i"*m+"-"*(n-m)
-# a=list(a)
-# # permute(a,0,n,{})
-
-
-# from datetime import datetime
-
-# rahulinTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
-# rahuloutTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
-# rohitinTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
-# rohitoutTime = datetime.strptime(input(),"%Y-%m-%d %H:%M:%S")
-
-# print(int((rahuloutTime-rahulinTime).total_seconds()+(rohitoutTime-rohitinTime).total_seconds()))
+# prime = next((i for i in range(n - 1, 1, -1) if isPrime(i)), 0)
+# print(prime)
 
 
 
+# s = input("Enter a string: ")
+# d = {}
+# for i in s:
+#     if i in d:
+#         d[i]+=1
+#     else:
+#         d[i]=1
+# for i in sorted(d.keys()):
+#     print(f"{i}: {d[i]}")
+
+# def encryptedData(data, key):
+#     data = str(data)
+#     key = key%len(data)
+#     print(key)
+#     return int(data[key:]+data[:key])
+
+# print(encryptedData("78512", 3))
+
+
+# def sumOfDigits(n):
+#     return n if n<10 else n%10 + sumOfDigits(n//10)
+
+# def prodDelivery(orderID):
+#     return [sumOfDigits(i) for i in orderID]
+
+# print(prodDelivery([123, 456, 789, 12345]))
+
+for i in range(int(input())):
+    s = input()
+    chars = ""
+    nums = ""
+    for i in s:
+        if i.isalpha():
+            chars+=i
+        else:
+            nums+=i
+    print(chars+nums)
